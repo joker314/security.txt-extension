@@ -64,11 +64,11 @@ class Line extends String {
   }
   
   get key() {
-    return this.split(":")[0]
+    return this.split(":")[0].toLowerCase().trim()
   }
   
   get value() {
-    return this.split(":").slice(1).join(":")
+    return this.split(":").slice(1).join(":").trim()
   }
   
   get commentText() {
