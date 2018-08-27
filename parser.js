@@ -9,11 +9,11 @@ function parse(file) {
   
   let comments = []
   
-  const result = {"_errors!": []}
+  const result = {errors: [], directives: {}}
   
   lines.forEach(line => {
     if(line.isInvalid) {
-      result["_errors!"].push(line.toString())
+      result.errors.push(line.toString())
       return
     }
     
@@ -23,11 +23,13 @@ function parse(file) {
     
     if(line.isDirective) {
       // If this directive hasn't been used before, initialise it
-      if(!result[line.key]) result[line.key] = []
+      if(!result.directives[line.key]) {
+        result.directives[line.key] = []
+      }
       
       // If there are comments, add them to output and purge
       if(comments.length) {
-        result[line.key].push({
+        result.directives[line.key].push({
           type: "comment",
           value: comments.join("\n")
         })
@@ -43,6 +45,7 @@ function parse(file) {
     }
   })
   
+  result.original = file
   return result
 }
 
@@ -52,7 +55,19 @@ class Line extends String {
   }
   
   get isInvalid() {
-    return !(this.startsWith("#") || this.split(":").length > 1)
+    if(this.isComment) return false
+
+    if(this.isDirective) return ![
+      "contact",
+      "acknowledgments",
+      "acknowledgements",
+      "encryption",
+      "hiring",
+      "permission",
+      "policy"
+    ].includes(this.key)
+    
+    return true
   }
   
   get isComment() {
@@ -60,7 +75,7 @@ class Line extends String {
   }
   
   get isDirective() {
-    return (!this.isComment) && this.split(":")
+    return (!this.isComment) && (this.split(":").length > 1)
   }
   
   get key() {
