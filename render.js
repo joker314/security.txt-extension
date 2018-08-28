@@ -20,12 +20,10 @@ function render (parsed) {
     
     // Comments at the end of the file aren't attached to a directive
     if(parsed.hangingComments.length) {
-      const hangingComment = document.createElement('DIV')
-      hangingComment.textContent = parsed.hangingComments.join('\n')
-      
-      hangingComment.classList.add('info')
-      
-      output.appendChild(hangingComment)
+      output.appendChild(directive('Closing remarks', parsed.hangingComments.map(comment => ({
+        type: 'comment',
+        value: comment
+      }))))
     }
 
     // Show a warning if Permission: is set
