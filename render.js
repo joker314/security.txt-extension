@@ -96,4 +96,7 @@ function capitalize(string) {
   return string[0].toUpperCase() + string.substr(1).toLowerCase()
 }
 
-render(parse(dummyData))
+const findSecurityTxt = () => new Promise(r => r(dummyData))
+findSecurityTxt().then(parse).then(render).catch(function() {
+  document.querySelector('#content').innerText = 'No security.txt file detected.'
+})
