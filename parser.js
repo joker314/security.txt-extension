@@ -13,7 +13,6 @@ function parse(file) {
   
   lines.forEach(line => {
     if(line.isInvalid) {
-      console.log('Debug info: ', line.isComment, line.isDirective, ALLOWED_FIELDS, line.key)
       result.errors.push(line.toString())
       return
     }

@@ -107,6 +107,5 @@ findSecurityTxt().then(function(response) {
   
   render(parse(response.data))
 }).catch(function() {
-  console.log('a')
   document.querySelector('#content').innerText = 'No security.txt file detected.'
 })
