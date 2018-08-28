@@ -13,6 +13,7 @@ function parse(file) {
   
   lines.forEach(line => {
     if(line.isInvalid) {
+      console.log('Debug info: ', line.isComment, line.isDirective, ALLOWED_FIELDS, line.key)
       result.errors.push(line.toString())
       return
     }
@@ -38,12 +39,17 @@ function parse(file) {
       }
       
       // Then, output the directive
-      result[line.key].push({
+      result.directives[line.key].push({
         type: "directive",
         value: line.value
       })
     }
   })
+  
+  // If there were comments at the end of the file, they
+  // haven't been associated with a directive. Add them
+  // to the object.
+  result.hangingComments = comments
   
   result.original = file
   return result
@@ -55,17 +61,13 @@ class Line extends String {
   }
   
   get isInvalid() {
-    if(this.isComment) return false
+    if(this.isComment) {
+      return false
+    }
 
-    if(this.isDirective) return ![
-      "contact",
-      "acknowledgments",
-      "acknowledgements",
-      "encryption",
-      "hiring",
-      "permission",
-      "policy"
-    ].includes(this.key)
+    if(this.isDirective) {
+      return !ALLOWED_FIELDS.includes(this.key)
+    }
     
     return true
   }
@@ -79,7 +81,7 @@ class Line extends String {
   }
   
   get key() {
-    return this.split(":")[0].toLowerCase().trim()
+    return this.split(":")[0].toLowerCase().replace(/^acknowledgments$/i, "acknowledgements").trim()
   }
   
   get value() {
