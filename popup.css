@@ -17,12 +17,16 @@ details {
   background: lightgreen;
   color: white;
 }
-details a {
+details a:not(.description) {
   background: blue;
   color: white;
   display: block;
   margin: 5px 0px;
   padding: 5px;
+}
+.description {
+  background-color: black;
+  color: white;
 }
 details summary {
   font-size: 1.5em;

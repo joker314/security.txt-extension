@@ -55,9 +55,27 @@ function sortFromList(a, b, list) {
 function directive(summary, details) {
   const detailsEl = document.createElement("DETAILS")
   const summaryEl = document.createElement("SUMMARY")
+  const briefDescription = document.createElement('DIV')
+  
+  briefDescription.classList.add('description')
 
   detailsEl.appendChild(summaryEl)
+  detailsEl.appendChild(briefDescription)
+
   summaryEl.textContent = summary
+
+  if(SUMMARIES[summary.toLowerCase()]) {
+    briefDescription.textContent = SUMMARIES[summary.toLowerCase()].what + ' '
+    
+    const anchor = document.createElement('A')
+    anchor.setAttribute('href', '#')
+    anchor.addEventListener('click', function() {
+      chrome.tabs.create({url: 'https://tools.ietf.org/html/draft-foudil-securitytxt-04#section-' + SUMMARIES[summary.toLowerCase()].rfc})
+    })
+    anchor.textContent = '(RFC)'
+    anchor.classList.add('description')
+    briefDescription.appendChild(anchor)
+  }
 
   details.forEach(detail => {
     if(detail.type === 'comment') {
