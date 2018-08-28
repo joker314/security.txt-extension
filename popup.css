@@ -1,0 +1,33 @@
+.invisible {
+  display: none;
+}
+.warning {
+  background: pink;
+  border: 2px solid red;
+  color: red;
+}
+.info {
+  background: lightgreen;
+  color: green;
+  padding: 2px;
+}
+details {
+  /* white-space: pre-wrap; -- respects newlines */
+  margin: 3px;
+  background: lightgreen;
+  color: white;
+}
+details a {
+  background: blue;
+  color: white;
+  display: block;
+  margin: 5px 0px;
+  padding: 5px;
+}
+details summary {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+pre {
+  font-size: 1.2em;
+}
