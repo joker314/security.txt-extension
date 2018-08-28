@@ -70,14 +70,17 @@ function directive(summary, details) {
       comment.classList.add('info')
       detailsEl.appendChild(comment)
     } else {
-      // @todo fix security issue with window.opener
       // @todo turn scheme into img
 
       const anchor = document.createElement('A')
+      anchor.setAttribute('href', '#')
+      anchor.textContent = detail.value
+      
       detailsEl.appendChild(anchor)
 
-      anchor.setAttribute('href', detail.value)
-      anchor.textContent = detail.value
+      anchor.addEventListener('click', () => {
+        chrome.tabs.create({url: detail.value})
+      })
     }
   })
   
