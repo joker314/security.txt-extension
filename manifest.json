@@ -3,9 +3,13 @@
 	"name": "Security.txt Parser",
 	"version": "1.0",
 	"description": "A parser for security.txt files for security researchers",
+  "permissions": [
+    "tabs",
+    "<all_urls>"
+  ],
   "browser_action": {
     "default_title": "Scan for security.txt file",
     "default_popup": "popup.html"
   },
-  "content_security_policy": "default-src 'self'"
+  "content_security_policy": "default-src 'self'; connect-src 'https://*'"
 }

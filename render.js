@@ -96,7 +96,14 @@ function capitalize(string) {
   return string[0].toUpperCase() + string.substr(1).toLowerCase()
 }
 
-const findSecurityTxt = () => new Promise(r => r(dummyData))
-findSecurityTxt().then(parse).then(render).catch(function() {
+
+// Actually crawl, parse, and render the security.txt file
+findSecurityTxt().then(function(response) {
+  if(response.redirect !== false) {
+    document.querySelector('#redirect').classList.remove('invisible')
+    document.querySelector('#redirectOrigin').textContent = response.redirect
+  }
+  render(parse(response.body))
+}).catch(function() {
   document.querySelector('#content').innerText = 'No security.txt file detected.'
 })
