@@ -25,7 +25,7 @@ Same origin policy means it needs access to make requests. This is because the l
 ## What happens if the security.txt file is malformed?
 It will show you just the raw text if it finds an invalid line.
 
-## I've found a security issue.
+## I've found a security issue in this extension.
 Email me at jokebookyeye [ at symbol ] gmail [dot] com.
 
 `javascript:` schemes in `Contact` fields are not vulnerabilities, so long as they open in a new tab. If you disagree, or are unsure, feel free to get in touch!
