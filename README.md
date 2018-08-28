@@ -15,7 +15,9 @@ Then, it lists each directive, together with their associated comments, and expa
 The error is there because the protocol changed from `http` to `https`, and this is considered a new origin.
 
 ## How do I install it?
-Until this appears in the Chrome, Firefox, or Opera webstores, you can install it manually. Search for "Load unpacked extension + BROWSER NAME".
+- Firefox? [Install it from Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/security-txt-parser/?src=search)
+- Chrome? The Chrome Web Store requires you to be 18+ (which I'm not) and pay $5.00 in order to upload an extension. Instead, search "Load unpacked extension Chrome" in your favourite browser, and follow the instructions to take the source code in this repository and place it on Chrome.
+- Opera? Coming soon, but for now, search "Load unpacked extension" in your favourite browser, and follow the instructions to take the source code in this repository and place it in Opera.
 
 ## Why does it need all those permissions?
 Same origin policy means it needs access to make requests. This is because the little popout is in a seperate origin to the page you're currrently viewing.
