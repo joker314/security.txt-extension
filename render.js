@@ -1,5 +1,3 @@
-document.documentElement.style.minWidth = '500px'
-
 function render (parsed) {
   const output = document.querySelector('#content')
   

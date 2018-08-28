@@ -31,3 +31,8 @@ details summary {
 pre {
   font-size: 1.2em;
 }
+html, body {
+  min-width: 500px;
+  overflow: wrap;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
