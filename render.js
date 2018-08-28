@@ -103,7 +103,9 @@ findSecurityTxt().then(function(response) {
     document.querySelector('#redirect').classList.remove('invisible')
     document.querySelector('#redirectOrigin').textContent = response.redirect
   }
-  render(parse(response.body))
+  
+  render(parse(response.data))
 }).catch(function() {
+  console.log('a')
   document.querySelector('#content').innerText = 'No security.txt file detected.'
 })
