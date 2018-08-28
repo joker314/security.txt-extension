@@ -11,5 +11,5 @@
     "default_title": "Scan for security.txt file",
     "default_popup": "popup.html"
   },
-  "content_security_policy": "default-src 'self'; connect-src 'https://*'"
+  "content_security_policy": "default-src 'self'; connect-src *"
 }
