@@ -1,0 +1,3 @@
+# Please report security issues to me by email.
+Contact: mailto:jokebookyeye@gmail.com
+Policy: https://github.com/joker314/securitytxt-extension#ive-found-a-security-issue
