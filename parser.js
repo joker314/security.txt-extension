@@ -80,7 +80,7 @@ class Line extends String {
   }
   
   get key() {
-    return this.split(":")[0].toLowerCase().replace(/^acknowledgments?$/i, "acknowledgements").trim()
+    return this.split(":")[0].toLowerCase().replace(/^acknowledge?ments?$/i, "acknowledgements").trim()
   }
   
   get value() {
